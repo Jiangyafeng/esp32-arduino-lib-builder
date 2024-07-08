@@ -25,6 +25,8 @@ elif [ "$IDF_COMMIT" ]; then
     commit_predefined="1"
 fi
 
+cp -Rf ../patches/libbtdm_app.a ../esp-idf/components/bt/controller/lib_esp32c3_family/esp32s3/
+
 #
 # UPDATE ESP-IDF TOOLS AND MODULES
 #
