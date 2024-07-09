@@ -25,8 +25,6 @@ elif [ "$IDF_COMMIT" ]; then
     commit_predefined="1"
 fi
 
-cp -Rf ../patches/libbtdm_app.a ../esp-idf/components/bt/controller/lib_esp32c3_family/esp32s3/
-
 #
 # UPDATE ESP-IDF TOOLS AND MODULES
 #
@@ -39,6 +37,7 @@ if [ ! -x $idf_was_installed ] || [ ! -x $commit_predefined ]; then
 
 	# Temporarily patch the ESP32-S2 I2C LL driver to keep the clock source
 	cd $IDF_PATH
+ 	cp -Rf ../patches/libbtdm_app.a ../esp-idf/components/bt/controller/lib_esp32c3_family/esp32s3/
 	patch -p1 -N -i ../patches/esp32s2_i2c_ll_master_init.diff
 	patch -p1 -N -i ../patches/mmu_map.diff
 	cd -
